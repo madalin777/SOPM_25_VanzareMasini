@@ -1,1 +1,245 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanzare Masini</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #1e1e1e;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff4c29;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 20px;
+      max-width: 600px;
+    }
+
+    .search-bar {
+      margin-top: 25px;
+      display: flex;
+      background-color: white;
+      border-radius: 50px;
+      overflow: hidden;
+      width: 350px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search-bar button {
+      background-color: #ff4c29;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-bar button:hover {
+      background-color: #ff6347;
+    }
+
+    .cars-section {
+      padding: 50px;
+      text-align: center;
+    }
+
+    .cars-section h2 {
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .car-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .car-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .car-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .car-card .details {
+      padding: 15px;
+    }
+
+    .car-card .details h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .car-card .details p {
+      color: #777;
+    }
+
+    footer {
+      background-color: #1e1e1e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 32px;
+      }
+      .search-bar {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vanzare Masini</h1>
+    <nav>
+      <a href="#">Acasă</a>
+      <a href="#">Mașini</a>
+      <a href="#">Despre</a>
+      <a href="#">Contact</a>
+      <a href="#">Cos</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Descoperă mașina perfectă pentru tine</h2>
+    <p>Mașini noi și second-hand, la cele mai bune prețuri din țară.</p>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Caută marcă sau model...">
+      <button onclick="cautaMasina()">Caută</button>
+    </div>
+  </section>
+
+  <section class="cars-section">
+    <h2>Oferte populare</h2>
+    <div class="car-grid" id="carList">
+      <div class="car-card">
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" alt="BMW">
+        <div class="details">
+          <h3>BMW Serie 3</h3>
+          <p>Preț: 23.500 €</p>
+        </div>
+      </div>
+      <div class="car-card">
+        <img src="c:\Users\Andreea\Downloads\audi-a4-sedan-top-1536x1024.jpg" alt="Audi">
+        <div class="details">
+          <h3>Audi A4</h3>
+          <p>Preț: 21.800 €</p>
+        </div>
+      </div>
+      <div class="car-card">
+        <img src="c:\Users\Andreea\Downloads\mercedes-benz-c-class.jpg" alt="Mercedes">
+        <div class="details">
+          <h3>Mercedes C-Class</h3>
+          <p>Preț: 25.900 €</p>
+        </div>
+      </div>
+      <div class="car-card">
+        <img src="c:\Users\Andreea\Downloads\DaciaDuster.jpg" alt="Dacia">
+        <div class="details">
+          <h3>Dacia Duster</h3>
+          <p>Preț: 18.400 €</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Vanzare Masini. Toate drepturile rezervate.</p>
+  </footer>
+
+  <script>
+    function cautaMasina() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cars = document.querySelectorAll('.car-card');
+      let found = false;
+
+      cars.forEach(car => {
+        const title = car.querySelector('h3').textContent.toLowerCase();
+        if (title.includes(input)) {
+          car.style.display = "block";
+          found = true;
+        } else {
+          car.style.display = "none";
+        }
+      });
+
+      if (!found && input !== "") {
+        alert("Nu am găsit mașina căutată!");
+      }
+    }
+  </script>
+</body>
+</html>
