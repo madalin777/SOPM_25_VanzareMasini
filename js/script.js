@@ -109,7 +109,7 @@ function showDetails(carId) {
   const modal = document.getElementById('detailsModal');
   const modalBody = document.getElementById('modalBody');
 
-  // Construirea conținutului model-ului cu informațiile mașinii
+  // Construirea conținutului modal-ului cu informațiile mașinii
   modalBody.innerHTML = `
     <h2>${car.title}</h2>
     <div class="modal-price">${car.price}</div>
@@ -158,9 +158,108 @@ function initializeFilters() {
       // Adăugarea clasei active pe filtrul selectat
       chip.classList.add('active');
       
-      // TODO: Aici se poate adăuga logica de filtrare efectivă a mașinilor
-      console.log('Filtrul selectat:', chip.textContent);
+      // Aplicarea filtrului selectat
+      const selectedFilter = chip.textContent.trim();
+      filterCars(selectedFilter);
+      
+      console.log('Filtrul selectat:', selectedFilter);
     });
+  });
+}
+
+// Funcția pentru filtrarea mașinilor după categorie
+function filterCars(category) {
+  const allCards = document.querySelectorAll('.card');
+  let visibleCount = 0;
+  
+  allCards.forEach(function(card) {
+    const shouldShow = shouldShowCard(card, category);
+    
+    if (shouldShow) {
+      visibleCount++;
+      card.style.display = 'flex';
+      // Animatie subtila de aparitie
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      setTimeout(function() {
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 100);
+    } else {
+      // Animatie subtila de disparitie
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(-20px)';
+      
+      setTimeout(function() {
+        card.style.display = 'none';
+      }, 300);
+    }
+  });
+  
+  // Actualizarea contorului de mașini afișate
+  updateResultsCounter(visibleCount, category);
+}
+
+// Funcția pentru actualizarea contorului de rezultate
+function updateResultsCounter(count, category) {
+  let counterElement = document.getElementById('resultsCounter');
+  
+  if (!counterElement) {
+    // Crearea elementului contor dacă nu există
+    counterElement = document.createElement('div');
+    counterElement.id = 'resultsCounter';
+    counterElement.className = 'results-counter';
+    
+    // Inserarea contorului după filtre
+    const filtersElement = document.querySelector('.filters');
+    filtersElement.parentNode.insertBefore(counterElement, filtersElement.nextSibling);
+  }
+  
+  const categoryText = category === 'Toate' ? 'toate mașinile' : `mașini ${category.toLowerCase()}`;
+  counterElement.innerHTML = `<span>${count} ${count === 1 ? 'mașină' : 'mașini'} ${category === 'Toate' ? 'disponibile' : 'găsite'}</span>`;
+}
+
+// Funcția pentru determinarea dacă o mașină trebuie afișată
+function shouldShowCard(card, category) {
+  if (category === 'Toate') {
+    return true;
+  }
+  
+  // Extragerea informațiilor despre mașină din card
+  const title = card.querySelector('h3').textContent.toLowerCase();
+  const specs = card.querySelectorAll('.spec');
+  
+  // Verificarea categoriei pe baza titlului și specificațiilor
+  switch (category) {
+    case 'SUV':
+      return title.includes('glc') || title.includes('duster') || title.includes('suv');
+      
+    case 'Sedan':
+      return title.includes('seria 3') || title.includes('a4') || title.includes('sedan');
+      
+    case 'Hatchback':
+      return title.includes('golf') || title.includes('hatchback');
+      
+    case 'Electric':
+      return title.includes('tesla') || title.includes('model 3') || 
+             Array.from(specs).some(spec => spec.textContent.toLowerCase().includes('electric'));
+      
+    default:
+      return true;
+  }
+}
+
+// Funcția pentru resetarea filtrelor și afișarea tuturor mașinilor
+function resetFilters() {
+  const allCards = document.querySelectorAll('.card');
+  allCards.forEach(function(card) {
+    card.style.display = 'flex';
+    card.style.opacity = '1';
+    card.style.transform = 'translateY(0)';
+    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
   });
 }
 
@@ -197,9 +296,13 @@ function initializeApp() {
   // Inițializarea închiderii modal-ului cu tasta Escape
   initializeModalCloseOnEscape();
   
+  // Afișarea contorului inițial pentru "Toate" mașinile
+  const totalCars = document.querySelectorAll('.card').length;
+  updateResultsCounter(totalCars, 'Toate');
+  
   console.log('Aplicația VanzareMasini a fost inițializată cu succes!');
+  console.log(`Total mașini în catalog: ${totalCars}`);
 }
 
 // Așteptarea încărcării complete a DOM-ului înainte de inițializare
 document.addEventListener('DOMContentLoaded', initializeApp);
-
