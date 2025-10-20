@@ -1,1 +1,59 @@
+/* Variabile CSS pentru temă (culori, accent) */
+:root { --bg:#0f1220; --card:#161a2b; --muted:#99a0b3; --text:#e6e9f2; --accent:#4da3ff; --accent-2:#22c55e; }
+* { box-sizing: border-box; }
+/* Setări globale și font */
+body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); }
+a { color: inherit; text-decoration: none; }
+
+/* Header sticky cu blur și border subtil */
+.header { position: sticky; top:0; z-index:10; backdrop-filter: saturate(1.2) blur(10px); background: rgba(15,18,32,0.7); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+.header-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.3px; }
+.brand-badge { width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, var(--accent), #7c4dff); display:grid; place-items:center; font-size:14px; }
+.nav { display:flex; gap:14px; }
+.nav a { padding:8px 12px; color: var(--muted); border-radius:8px; }
+.nav a.active, .nav a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+/* Secțiunea de titlu și filtre */
+.page-head { padding: 24px 0 8px; display:flex; align-items:end; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.page-title { margin:0; font-size: clamp(22px, 2.4vw, 28px); }
+.sub { color: var(--muted); margin-top:6px; font-size:14px; }
+.filters { display:flex; gap:10px; flex-wrap:wrap; }
+.chip { background:#101426; color:var(--text); border:1px solid rgba(255,255,255,0.08); padding:8px 12px; border-radius:999px; font-size:13px; cursor:pointer; }
+.chip.active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(77,163,255,0.2) inset; }
+
+/* Grid responsiv pe 12 coloane (span 4 = 3 pe rând) */
+.grid { display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; }
+@media (max-width: 720px) { .grid { grid-template-columns: repeat(6, 1fr); } }
+@media (max-width: 480px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* Card de produs: efect ușor de ridicare la hover */
+.card { grid-column: span 4; background: var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition: transform .2s ease, box-shadow .2s ease; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
+@media (max-width: 720px) { .card { grid-column: span 6; } }
+@media (max-width: 480px) { .card { grid-column: span 4; } }
+
+/* Wrapper pentru imagine + insigne */
+.thumb-wrap { position:relative; aspect-ratio: 16/9; background:#0b0e1b; }
+.thumb { width:100%; height:100%; object-fit:cover; display:block; }
+.badge { position:absolute; top:10px; left:10px; background: rgba(15,18,32,0.8); border:1px solid rgba(255,255,255,0.12); color: var(--text); font-size:12px; padding:6px 10px; border-radius:999px; backdrop-filter: blur(6px); }
+.price { position:absolute; bottom:10px; right:10px; background: linear-gradient(135deg, #11172d, #0e1427); border:1px solid rgba(255,255,255,0.12); color:#fff; font-weight:700; padding:8px 12px; border-radius:10px; }
+
+/* Conținut text + specificații */
+.content { padding:14px; display:flex; flex-direction:column; gap:10px; }
+.title { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.title h3 { margin:0; font-size:16px; }
+.title small { color: var(--muted); }
+.specs { display:flex; flex-wrap:wrap; gap:10px; color: var(--muted); font-size:13px; }
+.spec { display:flex; align-items:center; gap:6px; padding:6px 8px; background:#11162a; border:1px solid rgba(255,255,255,0.06); border-radius:8px; }
+.cta { display:flex; align-items:center; gap:8px; margin-top:4px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.10); background:#121833; color:#fff; cursor:pointer; font-weight:600; }
+.btn:hover { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(77,163,255,0.2) inset; }
+.btn.buy { background: linear-gradient(135deg, #1a9fff, #4ade80); border: none; color:#0b1220; }
+
+/* Footer cu text auxiliar */
+.foot { color: var(--muted); font-size:13px; padding: 24px 0 40px; text-align:center; }
+
+
 
