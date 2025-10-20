@@ -14,6 +14,7 @@ a { color: inherit; text-decoration: none; }
 .nav { display:flex; gap:14px; }
 .nav a { padding:8px 12px; color: var(--muted); border-radius:8px; }
 .nav a.active, .nav a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.cart-icon { font-size: 18px; padding: 8px 10px !important; }
 
 /* Secțiunea de titlu și filtre */
 .page-head { padding: 24px 0 8px; display:flex; align-items:end; justify-content:space-between; gap:16px; flex-wrap:wrap; }
@@ -55,5 +56,171 @@ a { color: inherit; text-decoration: none; }
 /* Footer cu text auxiliar */
 .foot { color: var(--muted); font-size:13px; padding: 24px 0 40px; text-align:center; }
 
+/* Stiluri pentru modal-ul de detalii */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background-color: var(--card);
+  margin: 5% auto;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.close {
+  color: var(--muted);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  z-index: 1001;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--text);
+}
+
+#modalBody {
+  padding: 30px;
+}
+
+#modalBody h2 {
+  margin: 0 0 10px 0;
+  color: var(--text);
+  font-size: 24px;
+}
+
+.modal-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-bottom: 20px;
+}
+
+.modal-info {
+  background: rgba(255,255,255,0.03);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-info p {
+  margin: 8px 0;
+  color: var(--text);
+}
+
+.modal-specs {
+  margin-bottom: 20px;
+}
+
+.modal-specs h3,
+.modal-description h3 {
+  color: var(--text);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.modal-specs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-specs li {
+  background: rgba(255,255,255,0.03);
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 8px;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+}
+
+.modal-description p {
+  color: var(--muted);
+  line-height: 1.6;
+  background: rgba(255,255,255,0.03);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Stiluri pentru contorul de rezultate */
+.results-counter {
+  margin: 16px 0;
+  padding: 8px 16px;
+  background: rgba(77, 163, 255, 0.1);
+  border: 1px solid rgba(77, 163, 255, 0.2);
+  border-radius: 8px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.results-counter span {
+  display: inline-block;
+}
+
+/* Animatie pentru aparitia contorului */
+.results-counter {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design pentru modal */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+  }
+  
+  #modalBody {
+    padding: 20px;
+  }
+  
+  #modalBody h2 {
+    font-size: 20px;
+  }
+  
+  .modal-price {
+    font-size: 24px;
+  }
+  
+  .results-counter {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
 
 
