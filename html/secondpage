@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- Fișierul CSS extern care conține toate stilurile pentru design -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles2.css">
   <!-- Fișierul JavaScript extern pentru funcționalitatea site-ului -->
   <script src="script.js" defer></script>
 </head>
