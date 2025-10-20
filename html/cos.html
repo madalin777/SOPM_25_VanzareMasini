@@ -1,1 +1,168 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- Setări de bază pentru documentul HTML -->
+  <meta charset="UTF-8">
+  <!-- Viewport pentru design responsive pe dispozitive mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titlul paginii pentru coșul de cumpărături -->
+  <title>Coș de Cumpărături - VanzareMasini</title>
+  
+  <!-- Optimizări pentru încărcarea rapidă a fonturilor Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fontul Inter pentru o aparență modernă și profesională -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Fișierul CSS pentru stilurile paginii de coș -->
+  <link rel="stylesheet" href="styles_cos.css">
+  <!-- Fișierul JavaScript pentru funcționalitatea coșului -->
+  <script src="cos.js" defer></script>
+</head>
+<body>
+  <!-- Antetul site-ului cu design sticky -->
+  <header class="header">
+    <!-- Container principal pentru conținutul header-ului -->
+    <div class="container header-inner">
+      <!-- Secțiunea cu logo-ul și numele companiei -->
+      <div class="brand">
+        <!-- Badge-ul cu litera V pentru logo -->
+        <div class="brand-badge">V</div>
+        <!-- Numele companiei -->
+        <span>VanzareMasini</span>
+      </div>
+      <!-- Meniul principal de navigație -->
+      <nav class="nav">
+        <!-- Link către pagina principală -->
+        <a href="index.html">Acasă</a>
+        <!-- Link către catalog -->
+        <a href="secondpage.html">Catalog</a>
+        <!-- Link către pagina de contact -->
+        <a href="#contact">Contact</a>
+        <!-- Iconița pentru coșul de cumpărături (activă pe această pagină) -->
+        <a href="cos.html" class="cart-icon active">🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Secțiunea principală cu conținutul paginii de coș -->
+  <main class="container">
+    <!-- Antetul paginii cu titlu și informații -->
+    <div class="page-head">
+      <!-- Secțiunea cu titlul și descrierea paginii -->
+      <div>
+        <!-- Titlul principal al paginii de coș -->
+        <h1 class="page-title">Coșul tău de cumpărături</h1>
+        <!-- Descrierea paginii -->
+        <div class="sub">Gestionează mașinile selectate și finalizează comanda</div>
+      </div>
+    </div>
+
+    <!-- Container pentru conținutul coșului -->
+    <div class="cart-container">
+      <!-- Secțiunea cu produsele din coș -->
+      <div class="cart-items">
+        <!-- Mesajul pentru coș gol -->
+        <div id="emptyCart" class="empty-cart">
+          <div class="empty-cart-icon">🚗</div>
+          <h2>Coșul tău este gol</h2>
+          <p>Nu ai adăugat încă nicio mașină în coș. Explorează catalogul nostru pentru a găsi mașina perfectă!</p>
+          <a href="secondpage.html" class="btn btn-primary">Vezi Catalog</a>
+        </div>
+
+        <!-- Lista cu produsele din coș (va fi populată dinamic) -->
+        <div id="cartItemsList" class="cart-items-list" style="display: none;">
+          <!-- Produsele vor fi adăugate aici dinamic -->
+        </div>
+      </div>
+
+      <!-- Secțiunea cu rezumatul comenzii -->
+      <div class="cart-summary">
+        <div class="summary-card">
+          <!-- Titlul secțiunii de rezumat -->
+          <h3>Rezumatul comenzii</h3>
+          
+          <!-- Detaliile comenzii -->
+          <div class="summary-details">
+            <!-- Numărul de produse -->
+            <div class="summary-row">
+              <span>Produse:</span>
+              <span id="itemCount">0</span>
+            </div>
+            
+            <!-- Subtotal -->
+            <div class="summary-row">
+              <span>Subtotal:</span>
+              <span id="subtotal">€0</span>
+            </div>
+            
+            <!-- Taxa de procesare -->
+            <div class="summary-row">
+              <span>Taxa de procesare:</span>
+              <span id="processingFee">€0</span>
+            </div>
+            
+            <!-- Linia de separare -->
+            <div class="summary-divider"></div>
+            
+            <!-- Totalul final -->
+            <div class="summary-row total">
+              <span>Total:</span>
+              <span id="total">€0</span>
+            </div>
+          </div>
+
+          <!-- Butoanele pentru acțiuni -->
+          <div class="summary-actions">
+            <!-- Butonul pentru continuarea cumpărăturilor -->
+            <a href="secondpage.html" class="btn btn-secondary">Continuă cumpărăturile</a>
+            
+            <!-- Butonul pentru finalizarea comenzii -->
+            <button id="checkoutBtn" class="btn btn-primary" disabled>
+              Finalizează comanda
+            </button>
+          </div>
+
+          <!-- Informații suplimentare -->
+          <div class="summary-info">
+            <p><strong>🔒 Plata securizată</strong></p>
+            <p><strong>📦 Livrare gratuită</strong></p>
+            <p><strong>✅ Garanție 2 ani</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secțiunea cu recomandări pentru produse similare -->
+    <div class="recommendations">
+      <h2>Produse recomandate</h2>
+      <div id="recommendationsList" class="recommendations-grid">
+        <!-- Produsele recomandate vor fi adăugate aici -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer simplu pentru pagină -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 VanzareMasini. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <!-- Modal pentru confirmarea ștergerii unui produs din coș -->
+  <div id="removeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeRemoveModal()">&times;</span>
+      <div class="modal-body">
+        <h3>Confirmă ștergerea</h3>
+        <p>Ești sigur că vrei să elimini această mașină din coș?</p>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" onclick="closeRemoveModal()">Anulează</button>
+          <button class="btn btn-danger" id="confirmRemoveBtn">Elimină</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
 
