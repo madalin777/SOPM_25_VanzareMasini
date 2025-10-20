@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalog Mașini - AutoMax</title>
+  <title>Catalog Mașini - VanzareMasini</title>
   <!-- Preload Google Fonts pentru performanță -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,14 +17,15 @@
     <div class="container header-inner">
       <!-- Marcă/Logo simplu -->
       <div class="brand">
-        <div class="brand-badge">A</div>
-        <span>AutoMax</span>
+        <div class="brand-badge">V</div>
+        <span>VanzareMasini</span>
       </div>
       <!-- Meniu de navigație; pagina curentă are clasa .active -->
       <nav class="nav">
         <a href="index.html">Acasă</a>
         <a class="active" href="secondpage.html">Catalog</a>
         <a href="#contact">Contact</a>
+        <a href="#cos" class="cart-icon">🛒</a>
       </nav>
     </div>
   </header>
@@ -220,6 +221,5 @@
   </script>
 </body>
 </html>
-
 
 
