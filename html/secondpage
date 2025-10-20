@@ -1,49 +1,72 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+  <!-- Setări de bază pentru documentul HTML -->
   <meta charset="UTF-8">
+  <!-- Viewport pentru design responsive pe dispozitive mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titlul paginii afișat în tab-ul browser-ului -->
   <title>Catalog Mașini - VanzareMasini</title>
-  <!-- Preload Google Fonts pentru performanță -->
+  
+  <!-- Optimizări pentru încărcarea rapidă a fonturilor Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fontul Inter pentru o aparență modernă și profesională -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Fișierul CSS separat care conține toate stilurile -->
+  
+  <!-- Fișierul CSS extern care conține toate stilurile pentru design -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Fișierul JavaScript extern pentru funcționalitatea site-ului -->
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Header sticky cu logo și navigație -->
+  <!-- Antetul site-ului cu design sticky (rămâne fixat în partea de sus la scroll) -->
   <header class="header">
+    <!-- Container principal pentru conținutul header-ului -->
     <div class="container header-inner">
-      <!-- Marcă/Logo simplu -->
+      <!-- Secțiunea cu logo-ul și numele companiei -->
       <div class="brand">
+        <!-- Badge-ul cu litera V pentru logo -->
         <div class="brand-badge">V</div>
+        <!-- Numele companiei -->
         <span>VanzareMasini</span>
       </div>
-      <!-- Meniu de navigație; pagina curentă are clasa .active -->
+      <!-- Meniul principal de navigație -->
       <nav class="nav">
+        <!-- Link către pagina principală -->
         <a href="index.html">Acasă</a>
+        <!-- Link către catalog (pagina curentă - are clasa .active pentru evidențiere) -->
         <a class="active" href="secondpage.html">Catalog</a>
+        <!-- Link către pagina de contact -->
         <a href="#contact">Contact</a>
+        <!-- Iconița pentru coșul de cumpărături -->
         <a href="#cos" class="cart-icon">🛒</a>
       </nav>
     </div>
   </header>
 
-  <!-- Conținutul principal al paginii -->
+  <!-- Secțiunea principală cu conținutul paginii -->
   <main class="container">
-    <!-- Titlu de pagină și filtre rapide (doar vizuale acum) -->
+    <!-- Antetul paginii cu titlu și filtre de categorii -->
     <div class="page-head">
+      <!-- Secțiunea cu titlul și descrierea paginii -->
       <div>
+        <!-- Titlul principal al paginii de catalog -->
         <h1 class="page-title">Mașini disponibile</h1>
+        <!-- Descrierea scurtă care explică beneficiile -->
         <div class="sub">Alege dintr-o selecție verificată, cu istoric transparent și garanție.</div>
       </div>
-      <!-- Butoane tip "chip" pentru filtrare (nu aplică logică, doar stare activă) -->
+      <!-- Filtrele pentru categorii de mașini (butoane interactive) -->
       <div class="filters">
+        <!-- Filtru activ pentru toate categoriile -->
         <button class="chip active">Toate</button>
+        <!-- Filtru pentru mașini SUV -->
         <button class="chip">SUV</button>
+        <!-- Filtru pentru mașini sedan -->
         <button class="chip">Sedan</button>
+        <!-- Filtru pentru mașini hatchback -->
         <button class="chip">Hatchback</button>
+        <!-- Filtru pentru mașini electrice -->
         <button class="chip">Electric</button>
       </div>
     </div>
@@ -72,7 +95,7 @@
           </div>
           <!-- Butoane pentru detalii și cumpărare -->
           <div class="cta">
-            <a class="btn" href="#detalii-bmw">Detalii</a>
+            <button class="btn" onclick="showDetails('bmw')">Detalii</button>
             <a class="btn buy" href="#cumpara-bmw">Cumpără</a>
           </div>
         </div>
@@ -99,7 +122,7 @@
             <span class="spec">EURO 6</span>
           </div>
           <div class="cta">
-            <a class="btn" href="#detalii-a4">Detalii</a>
+            <button class="btn" onclick="showDetails('audi')">Detalii</button>
             <a class="btn buy" href="#cumpara-a4">Cumpără</a>
           </div>
         </div>
@@ -124,7 +147,7 @@
             <span class="spec">Pilot automat</span>
           </div>
           <div class="cta">
-            <a class="btn" href="#detalii-tesla">Detalii</a>
+            <button class="btn" onclick="showDetails('tesla')">Detalii</button>
             <a class="btn buy" href="#cumpara-tesla">Cumpără</a>
           </div>
         </div>
@@ -149,7 +172,7 @@
             <span class="spec">EURO 6</span>
           </div>
           <div class="cta">
-            <a class="btn" href="#detalii-glc">Detalii</a>
+            <button class="btn" onclick="showDetails('mercedes')">Detalii</button>
             <a class="btn buy" href="#cumpara-glc">Cumpără</a>
           </div>
         </div>
@@ -174,7 +197,7 @@
             <span class="spec">EURO 6</span>
           </div>
           <div class="cta">
-            <a class="btn" href="#detalii-golf">Detalii</a>
+            <button class="btn" onclick="showDetails('volkswagen')">Detalii</button>
             <a class="btn buy" href="#cumpara-golf">Cumpără</a>
           </div>
         </div>
@@ -199,26 +222,27 @@
             <span class="spec">EURO 6</span>
           </div>
           <div class="cta">
-            <a class="btn" href="#detalii-duster">Detalii</a>
+            <button class="btn" onclick="showDetails('dacia')">Detalii</button>
             <a class="btn buy" href="#cumpara-duster">Cumpără</a>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- Mic text de încredere pentru footer de secțiune -->
+    <!-- Text de încredere pentru footer de secțiune -->
     <p class="foot">Toate vehiculele sunt verificate tehnic și pot fi finanțate în rate.</p>
   </main>
 
-  <!-- Script simplu pentru a marca filtrul activ (fără logică de filtrare) -->
-  <script>
-    document.querySelectorAll('.chip').forEach(function(chip){
-      chip.addEventListener('click', function(){
-        document.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('active'); });
-        chip.classList.add('active');
-      });
-    });
-  </script>
+  <!-- Modal pentru afișarea detaliilor mașinilor -->
+  <div id="detailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDetails()">&times;</span>
+      <div id="modalBody">
+        <!-- Conținutul modal-ului va fi populat dinamic -->
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
 
