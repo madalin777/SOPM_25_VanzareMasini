@@ -1,4 +1,5 @@
-v1.0.0 - versiunea de inceput a proiectului
-v2.0.0 - adaugare a doua pagina 
-v2.0.1 - am schimbat numele site-ului si am adaugat o iconita de cos de cumparaturi
-v2.1.1 - adaugarea functionalitatii butonului de detalii
+v1.0.0 - versiunea de inceput a proiectului (M)
+v2.0.0 - adaugare a doua pagina (G)
+v2.0.1 - am schimbat numele site-ului si am adaugat o iconita de cos de cumparaturi (G)
+v2.1.1 - functionalitatea butonului de detalii (G)
+v2.2.1 - functionalitatea butonelor de filtrare (G)
