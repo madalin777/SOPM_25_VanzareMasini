@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - VanzareMasini</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #1e1e1e;
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff4c29;
+    }
+
+    .contact-container {
+      max-width: 900px;
+      margin: 60px auto;
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+
+    .info-box {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .info-box h3 {
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .info-box p {
+      line-height: 1.6;
+      color: #cccccc;
+    }
+
+    form {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.3s;
+      background-color: #2a2a2a;
+      color: #ffffff;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #999;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #ffffff;
+    }
+
+    textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    button {
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background-color: #cccccc;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background-color: #111111;
+      color: #cccccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      border-top: 1px solid #333333;
+    }
+
+    @media (max-width: 700px) {
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vanzare Masini</h1>
+    <nav>
+      <a href="acasa.html">Acasă</a>
+      <a href="#">Mașini</a>
+      <a href="#">Despre</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="contact-container">
+    <h2>Contactează-ne</h2>
+    <div class="contact-info">
+      <div class="info-box">
+        <h3>Adresa</h3>
+        <p>Str. Strada Memorandumului nr.18<br>Brașov, România</p>
+      </div>
+      <div class="info-box">
+        <h3>Telefon</h3>
+        <p>+40 773 781 228-Mada</p>
+        <p>+40 720 466 633-Gabi</p>
+      </div>
+      <div class="info-box">
+        <h3>Email</h3>
+        <p>contact@vanzaremasini.ro</p>
+        <p>marianmadalin700@gmail.com</p>
+        <p>gabibarladianu@gmail.com</p>
+      </div>
+    </div>
+
+    <form id="contactForm">
+      <input type="text" id="nume" placeholder="Nume complet" required>
+      <input type="email" id="email" placeholder="Adresa de email" required>
+      <textarea id="mesaj" placeholder="Mesajul tău..." required></textarea>
+      <button type="submit">Trimite mesajul</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Vanzare Masini. Toate drepturile rezervate.</p>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nume = document.getElementById("nume").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mesaj = document.getElementById("mesaj").value.trim();
+
+      if (nume && email && mesaj) {
+        alert("Mulțumim, " + nume + "! Mesajul tău a fost trimis cu succes.");
+        this.reset();
+      } else {
+        alert("Te rugăm să completezi toate câmpurile!");
+      }
+    });
+  </script>
+</body>
+</html>
