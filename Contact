@@ -189,9 +189,9 @@
     <h1>VanzareMasini</h1>
     <nav>
       <a href="acasa.html">Acasă</a>
-      <a href="#">Mașini</a>
-      <a href="#">Despre</a>
+      <a href="#">Catalog</a>
       <a href="Contact.html">Contact</a>
+      <a href="#" class="cart-icon">🛒</a>
     </nav>
   </header>
 
