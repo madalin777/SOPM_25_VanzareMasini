@@ -1,6 +1,6 @@
 v1.0.0 - versiunea de inceput a proiectului (M)
 
-V1.0.1 - adaugarea pagina acasa(M)
+V1.0.1 - adaugarea paginii acasa(M)
 
 v1.1.1 - functionalitea search bar-ului de pe pagina acasa (M)
 
