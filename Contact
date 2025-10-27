@@ -54,11 +54,6 @@
       border-color: rgba(255, 255, 255, 0.2);
     }
 
-    nav a.active {
-      background: #1a1a1a;
-      color: #ffffff;
-    }
-
     .cart-icon {
       font-size: 20px;
       display: inline-flex;
@@ -117,6 +112,15 @@
     .info-box p {
       line-height: 1.6;
       color: #cccccc;
+    }
+
+    #map {
+      width: 100%;
+      height: 350px;
+      margin-top: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     form {
@@ -189,9 +193,9 @@
     <h1>VanzareMasini</h1>
     <nav>
       <a href="acasa.html">Acasă</a>
-      <a href="#">Catalog</a>
+      <a href="secondpage.html">Catalog</a>
       <a href="Contact.html">Contact</a>
-      <a href="#" class="cart-icon">🛒</a>
+      <a href="cos.html" class="cart-icon">🛒</a>
     </nav>
   </header>
 
@@ -200,12 +204,12 @@
     <div class="contact-info">
       <div class="info-box">
         <h3>Adresa</h3>
-        <p>Str. Strada Memorandumului nr.18<br>Brașov, România</p>
+        <p>Str. Memorandumului nr.18<br>Brașov, România</p>
       </div>
       <div class="info-box">
         <h3>Telefon</h3>
-        <p>+40 773 781 228-Mada</p>
-        <p>+40 720 466 633-Gabi</p>
+        <p>+40 773 781 228 - Mada</p>
+        <p>+40 720 466 633 - Gabi</p>
       </div>
       <div class="info-box">
         <h3>Email</h3>
@@ -214,6 +218,9 @@
         <p>gabibarladianu@gmail.com</p>
       </div>
     </div>
+
+    <!-- HARTA GOOGLE MAPS -->
+    <div id="map"></div>
 
     <form id="contactForm">
       <input type="text" id="nume" placeholder="Nume complet" required>
@@ -228,6 +235,36 @@
   </footer>
 
   <script>
+    // Inițializează harta Google
+    function initMap() {
+      const locatie = { lat: 45.653230337967805, lng: 25.58295357464681 }; // coordonate Brașov
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: locatie,
+        styles: [
+          { elementType: "geometry", stylers: [{ color: "#1e1e1e" }] },
+          { elementType: "labels.text.stroke", stylers: [{ color: "#1e1e1e" }] },
+          { elementType: "labels.text.fill", stylers: [{ color: "#ffffff" }] },
+          {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [{ color: "#2a2a2a" }]
+          },
+          {
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [{ color: "#000000" }]
+          }
+        ]
+      });
+
+      const marker = new google.maps.Marker({
+        position: locatie,
+        map: map,
+        title: "VanzareMasini - Str. Memorandumului nr.18"
+      });
+    }
+
     document.getElementById("contactForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const nume = document.getElementById("nume").value.trim();
@@ -241,6 +278,11 @@
         alert("Te rugăm să completezi toate câmpurile!");
       }
     });
+  </script>
+
+  <!-- Script Google Maps API cu cheia ta -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjuntapyIR2l9fW_QFKoCPzUh327ppUDQ&callback=initMap">
   </script>
 </body>
 </html>
